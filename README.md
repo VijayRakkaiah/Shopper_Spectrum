@@ -11,10 +11,10 @@ The project leverages **RFM (Recency, Frequency, Monetary)** analysis for custom
 ## 🖼️ Streamlit App Screenshots
 
 ### 1. Customer Recommendation Dashboard
-![Customer Segmentation](.\assets\recommendation.png)
+![Customer Segmentation](assets/recommendation.png)
 
 ### 2. Product Segmentation Dashboard
-![Product Recommendation](.\assets\segmentation.png)
+![Product Recommendation](assets/segmentation.png)
 
 ---
 
