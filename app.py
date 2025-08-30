@@ -11,9 +11,7 @@ product_names = joblib.load("product_names.pkl")
 kmeans = joblib.load("kmeans_model.pkl")
 scaler = joblib.load("scaler.pkl")
 
-# -------------------------------
-# 🧠 Function: Product Recommender
-# -------------------------------
+# Function: Product Recommender
 def recommend_by_product_name(product_name, top_n=5):
     def get_code_by_name(name):
         for code, desc in product_names.items():
@@ -34,35 +32,30 @@ def recommend_by_product_name(product_name, top_n=5):
     else:
         return [f"❌ Product name '{product_name}' not found."]
 
-# -------------------------------
-# 🧠 Function: Segment Predictor
-# -------------------------------
+# Function: Segment Predictor
 def predict_customer_segment(recency, frequency, monetary):
     input_scaled = scaler.transform([[recency, frequency, monetary]])
     cluster = kmeans.predict(input_scaled)[0]
 
     # Map cluster to segment name manually (adjust based on your actual cluster analysis)
     cluster_map = {
-        0: "High-Value",
-        1: "Regular",
-        2: "Occasional",
-        3: "At-Risk"
+        0: "Occasional",
+        1: "At-Risk",
+        2: "High-Value",
+        3: "Regular"
     }
 
     return cluster_map.get(cluster, "Unknown")
 
-# -------------------------------
-# 🎯 Streamlit App UI
-# -------------------------------
+# Streamlit App UI
 st.set_page_config(page_title="Shopper Spectrum", layout="wide")
 st.title("🛍️ Shopper Spectrum")
 st.markdown("**Customer Segmentation & Product Recommendation App**")
 
 tab1, tab2 = st.tabs(["📱 Product Recommendation", "👤 Customer Segmentation"])
 
-# ---------------------------------
-# 📱 Product Recommendation Module
-# ---------------------------------
+
+# Product Recommendation Module
 with tab1:
     st.header("🎯 Product Recommendation")
 
@@ -79,9 +72,7 @@ with tab1:
         else:
             st.warning("Please select a product.")
 
-# ---------------------------------
-# 👤 Customer Segmentation Module
-# ---------------------------------
+# Customer Segmentation Module
 with tab2:
     st.header("🎯 Customer Segmentation")
 
